@@ -16,6 +16,7 @@
   }
   .search-news {
     @include search-style();
+    flex-direction: row;
     gap: 2rem;
   }
 }

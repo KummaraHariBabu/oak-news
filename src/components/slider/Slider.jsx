@@ -3,7 +3,7 @@ import "./Slider.scss";
 
 const Slider = () => {
   return (
-    <div>Sidebar</div>
+    <div>Slider</div>
   )
 }
 
