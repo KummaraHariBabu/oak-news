@@ -1,0 +1,22 @@
+@mixin search-style {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.search-page {
+  @include search-style();
+  width: 100%;
+  padding-top: 4rem;
+
+  span {
+    color: red;
+  }
+  .search-news {
+    @include search-style();
+    flex-direction: row;
+    gap: 2rem;
+  }
+}

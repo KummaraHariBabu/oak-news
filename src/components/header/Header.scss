@@ -1,0 +1,59 @@
+@mixin displayContens {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin btnProps {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+$fntSize: 20px;
+.header-container {
+  color: orange;
+  background-color: black;
+  padding: 10px;
+}
+.header-top {
+  @include displayContens;
+  flex-wrap: wrap;
+}
+form {
+  width: 70%;
+  gap: 10px;
+  @include displayContens;
+  justify-content: center;
+}
+.search {
+  width: 70%;
+  @include btnProps;
+}
+button {
+  background-color: orange;
+  @include btnProps;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 575px) {
+  $pSize: 14px;
+  h1 {
+    font-size: $fntSize;
+  }
+
+  .header-top {
+    flex-direction: column;
+  }
+  form {
+    width: 80%;
+    margin-top: $pSize;
+    flex-direction: column;
+  }
+  .search {
+    width: 80%;
+    @include btnProps;
+  }
+  button {
+    width: 80%;
+  }
+}
