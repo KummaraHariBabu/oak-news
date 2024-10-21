@@ -4,6 +4,6 @@ export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   return (
-    <ThemeContext.Provider>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value="TEST">{children}</ThemeContext.Provider>
   )
 };
