@@ -1,0 +1,56 @@
+@mixin bars {
+  display: block;
+  color: white;
+  font-weight: 700;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.topUL {
+  display: flex;
+  justify-content: space-around;
+}
+.topUL li {
+  position: relative;
+}
+
+.topUL li:hover ul {
+  display: block;
+  background-color: black;
+  color: white;
+}
+.topUL a {
+  @include bars();
+}
+
+p {
+  @include bars();
+  cursor: pointer;
+}
+
+.bottomUL {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: black;
+}
+.bottomUL li {
+  width: 10rem;
+  padding: 10px;
+  font-weight: 500;
+  text-align: center;
+  border-bottom: 1px solid orange;
+  color: white;
+  cursor: pointer;
+}
+@media screen and (max-width: 575px) {
+  .topUL {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .topUL li {
+    width: 80%;
+    border-bottom: 1px solid orange;
+  }
+}
