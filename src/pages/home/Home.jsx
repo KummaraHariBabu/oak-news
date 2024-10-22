@@ -5,6 +5,7 @@ import axios from "axios";
 import NewsCard from "../../components/newscard/NewsCard";
 import Spinner from "../../components/spinner/Spinner";
 import { ThemeContext } from "../../context/ThemeContext";
+import Theme from "../../components/theme/Theme";
 
 const Home = () => {
   const [news, setNews] = useState([]);
@@ -14,26 +15,38 @@ const Home = () => {
 
   //imported themecontext for theme change
   const theme = useContext(ThemeContext);
-  console.log(theme);
+  const darkMode = theme.state.darkMode;
+  useEffect(() => {
+    const cachedNews = localStorage.getItem("newsData");
+    if (cachedNews) {
+      setNews(JSON.parse(cachedNews));
+    } else {
+      getNews();
+    }
+  }, []);
 
   const getNews = async () => {
     setLoading(true);
     try {
-      const {data} = await axios(url);
+      const { data } = await axios(url);
       setNews(data.articles);
-      setLoading(false);
+      localStorage.setItem("newsData", JSON.stringify(data.articles));
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
-  useEffect(() => {
-    getNews();
-  }, []);
-  const slidernews = news?.splice(0, 3);
+
+  const sliderNews = news?.splice(0, 3);
   return (
-    <div className="home-container">
+    <div
+      className="home-container"
+      style={{ backgroundColor: darkMode ? "orange" : "#cbc8c8" }}
+    >
+      <Theme />
       <div className="slider">
-        <Slider slidernews={slidernews} />
+        <Slider sliderNews={sliderNews} />
       </div>
       <div className="news">
         {loading && <Spinner />}
