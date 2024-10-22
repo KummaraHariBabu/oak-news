@@ -50,7 +50,7 @@ const Home = () => {
       </div>
       <div className="news">
         {loading && <Spinner />}
-        {news?.map((item, index) => (
+        {news.map((item, index) => (
           <NewsCard key={index} {...item} />
         ))}
       </div>
