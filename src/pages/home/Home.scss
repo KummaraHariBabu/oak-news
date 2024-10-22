@@ -1,11 +1,12 @@
 .home-container {
-  padding: 3rem 0 5rem 0;
+  padding: 2rem 0 0rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   .slider {
     display: flex;
     justify-content: center;
+    margin-bottom: 1rem;
   }
   .news {
     width: 100%;

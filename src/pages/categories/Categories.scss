@@ -1,0 +1,55 @@
+.categories-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  background-color: orange;
+  .search-by-country {
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    position: relative;
+    .form {
+      width: 90%;
+      height: 10rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1rem;
+      position: sticky;
+      top: 0;
+      input {
+        width: 100%;
+        padding: 0.5rem;
+      }
+      button {
+        width: 100%;
+        padding: 0.5rem;
+        background-color: orange;
+        border-radius: 10px;
+      }
+    }
+  }
+  .categories-list {
+    width: 100%;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+}
+@media screen and (max-width: 575px) {
+  .categories-container {
+    margin-top: 1px;
+    flex-direction: column;
+    .search-by-country {
+      width: 100%;
+      .form {
+        height: 7rem;
+        margin-top: 0;
+      }
+    }
+  }
+}

@@ -1,68 +1,93 @@
 .news-card {
-    display: flex;
-    flex-direction: column;
-    width: 20rem;
-    height: 30rem;
-    background-color: black;
-    color: white;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    position: relative;
-    overflow: hidden; /* Keep this only if you have overflowing content */
-  
-    /* Adjust the scale effect to prevent shrinking */
-    transform-origin: center center; /* Ensures smooth scaling from the center */
-  
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow to enhance the effect */
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  height: 30rem;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden; /* Keep this only if you have overflowing content */
+
+  /* Adjust the scale effect to prevent shrinking */
+  transform-origin: center center; /* Ensures smooth scaling from the center */
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow to enhance the effect */
+  }
+
+  img {
+    width: 100%;
+    height: 40%; /* Increased image height to cover more of the card */
+    object-fit: cover; /* Ensures the image doesn't distort */
+  }
+
+  .news-card-details {
+    padding: 10px;
+    flex: 1; /* Makes sure this section takes up remaining space */
+    h3 {
+      color: red;
+      margin: 0;
     }
-  
-    img {
+
+    p {
+      /* Container settings */
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow-y: scroll; /* Enable scroll but hide scrollbar */
+      /* Hide scrollbar in WebKit browsers (Chrome, Safari) */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Hide scrollbar in Firefox */
+      scrollbar-width: none; /* For Firefox */
+
+      /* Optional: Padding to prevent cutoff of justified text */
+      padding-right: 10px;
+    }
+
+    .card-details {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: 1rem;
       width: 100%;
-      height: 40%; /* Increased image height to cover more of the card */
-      object-fit: cover; /* Ensures the image doesn't distort */
-    }
-  
-    .news-card-details {
-      padding: 10px;
-      flex: 1; /* Makes sure this section takes up remaining space */
-  
-      h3 {
-        color: red;
-        margin: 0;
-      }
-  
-      p {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-  
-      .card-details {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        bottom: 1rem;
-        width: 100%;
-        padding: 1rem;
-  
-        .link {
-          background-color: orange;
-          color: black;
-          border-radius: 10px;
-          padding: 0.5rem 1rem;
-          text-decoration: none;
-          transition: background-color 0.3s, color 0.3s;
-  
-          &:hover {
-            background-color: red;
-            color: white;
-          }
+      padding: 1rem;
+      text-align: center;
+
+      .link {
+        background-color: orange;
+        color: black;
+        border-radius: 10px;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+        position: relative;
+        left: -10px;
+
+        &:hover {
+          background-color: red;
+          color: white;
         }
       }
     }
   }
-  
+}
+
+@media screen and (max-width: 575px) {
+  .news-card {
+    .news-card-details {
+      p {
+        font-size: 14px;
+      }
+      .card-details {
+        bottom: -0.5rem;
+      }
+    }
+  }
+}
