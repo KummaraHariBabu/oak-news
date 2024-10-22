@@ -1,46 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Categories.scss";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 import Spinner from "../../components/spinner/Spinner";
 import NewsCard from "../../components/newscard/NewsCard";
+import useNews from "../../hooks/useNews";
 const Categories = () => {
-  const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(false);
   const { state } = useLocation();
-  console.log(state.category);
-  const apiKey = process.env.REACT_APP_API_KEY;
-  const url = `https://newsapi.org/v2/top-headlines?country=us&category=${state.category}&apiKey=${apiKey}`;
 
-  const getNews = async () => {
-    setLoading(true);
-    try {
-      const { data } = await axios(url);
-      setNews(data.articles);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-  useEffect(() => {
-    getNews();
-  }, []);
-  console.log(news);
-
-  //accessing key value
+  const { news, loading, filter, setFilter, handleSubmit } = useNews(
+    state.category
+  );
 
   return (
     <div className="categories-container">
       <div className="search-by-country">
-        <form className="form">
-          <input type="text" placeholder="ex:us,tr,jp,mx.."/>
+        <form onSubmit={handleSubmit} className="form">
+          <input
+            type="text"
+            placeholder="ex:us,tr,jp,mx.."
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          />
           <button type="submit">Filter Country</button>
         </form>
       </div>
 
       <div className="categories-list">
         {loading && <Spinner />}
+        {!loading && news.length === 0 && (
+          <p>No news Found for this {state.category} country</p>
+        )}
         {news.map((item, index) => (
           <NewsCard key={index} {...item} />
         ))}

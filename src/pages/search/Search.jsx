@@ -16,7 +16,7 @@ const Search = () => {
       .then((res) => res.json())
       .then((data) => setNews(data.articles))
       .catch((err) => console.log(err));
-  },[]);
+  },[url]);
   console.log(news)
   return (
     <div className="search-page">

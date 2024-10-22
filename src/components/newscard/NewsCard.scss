@@ -58,6 +58,7 @@
       bottom: 1rem;
       width: 100%;
       padding: 1rem;
+      text-align: center;
 
       .link {
         background-color: orange;
@@ -66,6 +67,8 @@
         padding: 0.5rem 1rem;
         text-decoration: none;
         transition: background-color 0.3s, color 0.3s;
+        position: relative;
+        left: -10px;
 
         &:hover {
           background-color: red;
@@ -81,6 +84,9 @@
     .news-card-details {
       p {
         font-size: 14px;
+      }
+      .card-details {
+        bottom: -0.5rem;
       }
     }
   }

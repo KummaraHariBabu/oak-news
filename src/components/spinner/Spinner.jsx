@@ -1,10 +1,12 @@
-import React from 'react'
-import "./Spinner.scss"
+import React from "react";
+import "./Spinner.scss"; // You can style it as per your preference
 
 const Spinner = () => {
   return (
-    <div>Spinner</div>
-  )
-}
+    <div className="spinner-container">
+      <div className="spinner"></div>
+    </div>
+  );
+};
 
-export default Spinner
+export default Spinner;

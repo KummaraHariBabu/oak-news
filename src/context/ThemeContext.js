@@ -21,6 +21,3 @@ export const ThemeProvider = ({ children }) => {
     </ThemeContext.Provider>
   );
 };
-
-// Usage in a component
-// <button onClick={changeTheme}>Theme</button>
