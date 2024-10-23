@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Header.scss";
 import Navbar from "../navbar/Navbar";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Header = () => {
   const [search, setSearch] = useState("");
 
@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <div className="header-container">
       <div className="header-top">
-        <h1>OAK News</h1>
+        <h1><Link to="/" style={{color:"orange"}}><i>OAK News</i></Link></h1>
         <form onSubmit={handleSubmit}>
           <input
             className="search"
